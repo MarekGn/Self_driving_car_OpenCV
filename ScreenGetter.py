@@ -7,8 +7,8 @@ def get_screen():
     monitor = {
         "top": mon["top"] + 150,
         "left": mon["left"] + 960,
-        "width": 1100,
-        "height": 600,
+        "width": 800,
+        "height": 500,
         "mon": 2}
     screen = np.array(sct.grab(monitor))
     return screen

@@ -3,14 +3,16 @@ import numpy as np
 from numpy import ones, vstack
 from numpy.linalg import lstsq
 from statistics import mean
-
+import time
 
 def process_img(original_image):
     processed_img = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
     processed_img = cv2.Canny(processed_img, threshold1=100, threshold2=220)
     processed_img = cv2.GaussianBlur(processed_img, (5, 5), 0)
-    vertices = np.array([[0, 550], [0, 420], [320, 290], [770, 290], [1100, 420], [1100, 550], ], np.int32)
+    vertices = np.array([[0, 400], [0, 350], [280, 250], [620, 250], [800, 350], [800, 400], ], np.int32)
     processed_img = roi(processed_img, [vertices])
+    # cv2.imshow('image', processed_img)
+    # cv2.waitKey(0)
     lines = cv2.HoughLinesP(processed_img, 1, np.pi/180, 180, 20, 15)
     m1 = 0
     m2 = 0
